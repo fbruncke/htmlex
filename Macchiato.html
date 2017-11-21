@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Coffee Macchiato</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <style>
+            body {
+                background-color: linen;
+            }
+
+            h1.normalgreen {
+                color: green;
+                margin-left: 40px;
+            } 
+
+            h1.strangeblue {
+                color: blue;
+                margin-left: 40px;
+            } 
+
+            .justpurple {
+                color: purple;
+                margin-left: 40px;
+            } 
+            
+            #justorangeID {
+                text-align: center;
+                color: orange;
+            }
+
+            /* comment */
+            h1, h2, p {
+                font-style: italic;               
+           }
+        </style>
+        <script>
+            function alertFunc(){
+                //alert("I was called");  
+                
+                document.getElementById("div1").innerHTML = "hej";               
+                
+            }
+        </script>
+    </head>
+    <body>
+        <div id="div1" onclick="alertFunc();"> TODO write content</div>
+        <!-- a comment -->
+        <h1 class="strangeblue">h1 some headline with green internal css</h1>
+        <h1 class="normalgreen">h1 some headline with blue internal css</h1>
+        <h2 class="normalgreen">h2 some headline with no internal css</h2>
+        <h2 class="justpurple">h2 some headline with purple internal css</h2>
+        <h2 id="justorangeID">h2 some headline with orange internal css</h2>
+        
+
+        <a href="index.html"><b>Back</b></a>
+        <a href="index.html"><button>Back</button></a>
+        <a href="index.html"><img width="100" height="100" src="images/back-clipart-back-md.png" alt="Back"/></a>
+        <a href="javascript: window.history.go(-1);" ><b>Bad Back</b></a>
+        <a href="jq.html"><b>jQ</b></a>
+        
+    </body>
+</html>

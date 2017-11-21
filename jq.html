@@ -1,0 +1,114 @@
+﻿<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="bootstrap/bootstrap.css" rel="stylesheet" type="text/css"/>
+        <link href="bootstrap/bootstrap-theme.css" rel="stylesheet" type="text/css"/>
+        
+         <style>
+           .grey {
+                background-color: #ccc;
+                padding: 20px;
+            } 
+        </style>
+        <script src="bootstrap/jquery-3.2.1.min.js"></script>
+        <script>            
+            $(document).ready(function(){
+               $("#btn1").click(function(){
+                    $("#well1").text("jQuery is working!");
+                    $(".well").text("jQuery is working!");
+                    $(document.body).css("background-color", "#000BBB");
+                });
+                
+                $("#btn3").click(function(){
+                       alert("ja");
+                       document.getElementById("well1").innerHTML = document.getElementById("well2").innerHTML;                
+                });
+
+                window.setInterval(callAjax, 10000);
+                
+                function callAjax(){
+                    $.ajax({
+                        url: "http://rest-service.guides.spring.io/greeting"
+                        //url: "http://localhost:8080/myrest/webresources/Mypath"
+                    }).then(function(data) {
+                        
+                       $('#greeting-id').text(data.id);
+                       $('#greeting-content').text(data.content);
+                   });
+                }                
+                
+                $("#btn2").click(function(){
+                    $.ajax({
+                        type: "GET",
+                        url: "http://rest-service.guides.spring.io/greeting"
+                        //url: "http://localhost:8080/myrest/webresources/Mypath"
+                    }).then(function(data) {
+                        alert(JSON.stringify(data));
+                       $('#greeting-id').text(data.id);
+                       $('#greeting-content').text(data.content);
+                   });
+                });
+                
+                var modu = 0;
+                $("#btnshow").click(function(){
+                    modu++;
+                    if( modu%2 )
+                        $("#div1").show("slow");
+                    else
+                        $("#div1").hide("slow");                        
+                });
+
+
+                $("#btnWS").click(function () {
+                    
+                    $.ajax({
+                        type: "GET",
+                        dataType: "json",
+                        url: "http://localhost:6266/WebService1.asmx/getStudents"                        
+                    }).then(function (data) {
+                        alert(JSON.stringify(data));
+                        alert("data[1].name: " + data[1].name);
+                        alert("data[1].grade: " + data[1].grade);
+                    });
+                    return false;
+                });
+            }); 
+
+        </script>
+
+    </head>
+    <body>
+        <div>TODO write content</div>
+        <div class="grey">
+            <div class="container">
+                <div id="well1" class="well">this is my first container</div>
+                <div id="well2" class="well">this is my second container</div>
+            </div>
+        </div>
+
+        <div id="greeting-id" class="well"></div>
+        <div id="greeting-content" class="well"></div>
+        
+        <p id="btn1" class="btn btn-primary"><b>Click</b></p>
+        
+        <p id="btn2" class="btn btn-info"><b>Click ajax</b></p>
+        <p id="btnshow" class="btn"><b>show</b></p>
+        <a href="Macchiato.html" class="btn"><b>Back</b></a>
+        
+        <p id="btn3" class="btn"><b>Click copy</b></p>
+        
+        <div id="div1" class="well" style="display:none" > hidden </div>
+        
+        <p id="btnWS" class="btn btn-info"><b>Click test own WS</b></p>
+
+        <script src="bootstrap/bootstrap.js" type="text/javascript"></script>
+    </body>
+</html>
